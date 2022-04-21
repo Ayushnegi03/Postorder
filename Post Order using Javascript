@@ -1,0 +1,38 @@
+//Postorder
+function search(Arr , X , N)
+{
+    for (var i = 0; i < N; i++)
+        if (Arr[i] == X)
+            return i;
+    return -1;
+}
+function printPostOrder( in1, pre , N)
+{
+    var root = search(in1, pre[0], N);
+    if (root != 0)
+        printPostOrder(in1, pre.slice(1, N), root);
+    if (root != N - 1)
+        printPostOrder(in1.slice(root+1, N),
+            pre.slice(1+root, N), N - root - 1);
+
+    console.log( pre[0] + " ");
+}
+
+var in1 = [ 4, 2, 5, 1, 3, 6 ];
+var pre = [ 1, 2, 4, 5, 3, 6 ];
+var N = in1.length;
+console.log("Array Element:")
+console.log(in1);
+console.log("The Postorder traversal:" );
+printPostOrder(in1, pre, N);
+//Output:
+//Array Element:
+//[ 4, 2, 5, 1, 3, 6 ]
+//The Postorder traversal:
+//4
+//5
+//2
+//6
+//3
+//1
+ 
