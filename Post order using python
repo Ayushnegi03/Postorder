@@ -1,0 +1,48 @@
+#Postorder
+class Node:    
+    def __init__(self, data):
+        self.left = None
+        self.right = None
+        self.data = data
+    def Insert(self, data):
+        if self.data:
+            if data < self.data:
+                if self.left is None:
+                    self.left = Node(data)
+                else:
+                    self.left.Insert(data)
+            elif data > self.data:
+                if self.right is None:
+                    self.right = Node(data)
+                else:
+                    self.right.Insert(data)
+        else:
+            self.data = data
+    def PrintTree(self):
+        if self.left:
+            self.left.PrintTree()
+        print( self.data),
+        if self.right:
+            self.right.PrintTree()
+    def PostorderTraversal(self, Root):
+        res = []
+        if Root:
+            res = self.PostorderTraversal(Root.left)
+            res = res + self.PostorderTraversal(Root.right)
+            res.append(Root.data)
+        return res
+Root = Node(27)
+Root.Insert(14)
+Root.Insert(35)
+Root.Insert(10)
+Root.Insert(19)
+Root.Insert(31)
+Root.Insert(42)
+Root.Insert(29)
+Root.Insert(31)
+Root.Insert(52)
+print("Postorder:")
+print(Root.PostorderTraversal(Root))
+#Output-
+#Postorder:
+#[10, 19, 14, 29, 31, 52, 42, 35, 27]
