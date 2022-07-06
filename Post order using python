@@ -43,6 +43,6 @@ Root.Insert(31)
 Root.Insert(52)
 print("Postorder:")
 print(Root.PostorderTraversal(Root))
-#Output-
+#Output->
 #Postorder:
 #[10, 19, 14, 29, 31, 52, 42, 35, 27]
